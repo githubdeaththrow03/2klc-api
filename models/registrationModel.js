@@ -1,5 +1,7 @@
 const pool = require('../models/pool');
 
+
+// error if username is not unique  
 exports.isUsernameTaken = (username) => {
   const findUserQuery = 'SELECT COUNT(*) as count FROM tblAccInfo WHERE username = ?';
   return new Promise((resolve, reject) => {
@@ -15,6 +17,8 @@ exports.isUsernameTaken = (username) => {
   });
 };
 
+
+// separates the datas needed in tblaccinfo and tbluserinfo
 exports.registerUser = (registrationData) => {
   const {
     username,
@@ -29,7 +33,7 @@ exports.registerUser = (registrationData) => {
     dream_community,
   } = registrationData;
   
-
+  
   const accInfoQuery =
     'INSERT INTO tblAccInfo (username, email, password) VALUES (?, ?, ?)';
   const accInfoValues = [username, email, password];

@@ -1,3 +1,5 @@
+// handling user registration requests
+
 const registrationModel = require('../models/registrationModel');
 
 exports.registerUser = async (req, res) => {
@@ -6,6 +8,7 @@ exports.registerUser = async (req, res) => {
   try {
     const isUsernameTaken = await registrationModel.isUsernameTaken(registrationData.username);
 
+    // possible error checking for registration process
     if (isUsernameTaken) {
       res.status(409).json({ error: 'Username has been taken' });
     } else {

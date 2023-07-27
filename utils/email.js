@@ -1,8 +1,11 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
+// specifying email recipient
 const sendEmail = async (recipient, subject, message) => {
   try {
+
+    // nodemail transporter using gmail and lebrown city gmail acc
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -11,6 +14,7 @@ const sendEmail = async (recipient, subject, message) => {
       },
     });
 
+    // gmail configuration (content)
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: recipient,
@@ -27,3 +31,5 @@ const sendEmail = async (recipient, subject, message) => {
 };
 
 module.exports = sendEmail;
+
+
