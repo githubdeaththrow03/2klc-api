@@ -190,9 +190,8 @@ router.post('/reset-password', (req, res) => {
       console.error('Error fetching user:', err);
       res.status(500).json({ error: 'An error occurred while fetching user.' });
     } else if (user.length === 0) {
-      res.json({ success: false }); // Reset token not found
+      res.json({ success: false }); 
     } else {
-      // Update the user's password with the new one
       const updatePasswordQuery = 'UPDATE tblAccInfo SET password = ?, reset_token = NULL WHERE uID = ?';
       pool.query(updatePasswordQuery, [password, user[0].uID], (err) => {
         if (err) {
