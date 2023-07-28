@@ -167,7 +167,7 @@ router.post('/forgot-password', (req, res) => {
           console.error('Error saving reset token:', err);
           res.status(500).json({ error: 'An error occurred while saving reset token.' });
         } else {
-          const resetLink = `http://your-domain/reset-password?token=${resetToken}`;
+          const resetLink = `https://kjp-project-326denoqn-githubdeaththrow03.vercel.app/resetpass=${resetToken}`;
           const emailMessage = `Click on the following link to reset your password: ${resetLink}`;
           sendEmail(user[0].email, 'Password Reset', emailMessage);
 
